@@ -4,9 +4,13 @@ import { env } from "@/env";
 
 export default {
   schema: "./src/server/db/schema.ts",
-  driver: "mysql2",
+  driver: "pg",
   dbCredentials: {
-    uri: env.DATABASE_URL,
+    database: "production",
+    host: env.DATABASE_HOST,
+    password: env.DATABASE_PASSWORD,
+    port: env.DATABASE_PORT,
+    ssl: env.DATABASE_SSL,
+    user: env.DATABASE_USERNAME,
   },
-  tablesFilter: ["azure-todo-app_*"],
 } satisfies Config;

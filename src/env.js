@@ -17,6 +17,14 @@ export const env = createEnv({
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string() : z.string().url(),
     ),
+
+    // Database
+    DATABASE_HOST: z.string().min(1),
+    DATABASE_PORT: z.coerce.number().min(1).max(65535),
+    DATABASE_NAME: z.string().min(1),
+    DATABASE_USERNAME: z.string().min(1),
+    DATABASE_PASSWORD: z.string().min(1),
+    DATABASE_SSL: z.boolean().default(false),
   },
 
   client: {},
@@ -29,6 +37,12 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    DATABASE_HOST: process.env.DATABASE_HOST,
+    DATABASE_NAME: process.env.DATABASE_NAME,
+    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+    DATABASE_PORT: process.env.DATABASE_PORT,
+    DATABASE_SSL: process.env.DATABASE_SSL,
+    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION || !!process.env.CI,
   emptyStringAsUndefined: true,
