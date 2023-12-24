@@ -1,5 +1,5 @@
 export const GET = async () => {
-  return {
+  return Response.json({
     message: "Welcome to Azure Function App",
-  };
+  });
 };
