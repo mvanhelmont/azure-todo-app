@@ -7,6 +7,8 @@ await import("./src/env.js");
 /** @type {import("next").NextConfig} */
 const config = {
   output: process.env.BUILD_STANDALONE === "true" ? "standalone" : undefined,
+  swcMinify: true,
+  reactStrictMode: true,
 };
 
 export default config;
